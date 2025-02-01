@@ -48,7 +48,6 @@ const Login: React.FC = () => {
       <TextInput
         style={styles.input}
         placeholder="Enter your email"
-        fontStyle="Avenir-Light"
         value={email}
         onChangeText={setEmail}
         keyboardType="email-address"
@@ -65,6 +64,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: 16,
     backgroundColor: '#F5FAFF', // Background color
+    alignSelf: 'stretch',
   },
   header: {
     fontSize: 24,
