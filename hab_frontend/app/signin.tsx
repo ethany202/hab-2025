@@ -1,9 +1,7 @@
-import { useRouter } from 'expo-router';
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, Alert } from 'react-native';
 
 const Login: React.FC = () => {
-  const router = useRouter();
   const [name, setName] = useState<string>('');
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
@@ -14,29 +12,19 @@ const Login: React.FC = () => {
       Alert.alert('Error', 'Please fill in all fields');
       return;
     }
-    Alert.alert('Success', 'You have successfully signed up!', [
-      { text: 'OK', onPress: () => router.push('/role-selection') }
-    ]);
+    Alert.alert('Success', 'You have successfully signed up!');
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>Sign Up</Text>
+      <Text style={styles.header}>Sign In</Text>
 
-      <Text style={styles.label}>First Name</Text>
+      <Text style={styles.label}>Username/Email</Text>
       <TextInput
         style={styles.input}
-        placeholder="Enter your first name"
+        placeholder="Enter your username or email"
         value={name}
         onChangeText={setName}
-      />
-
-      <Text style={styles.label}>Username</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Enter your username"
-        value={username}
-        onChangeText={setUsername}
       />
 
       <Text style={styles.label}>Password</Text>
@@ -46,15 +34,6 @@ const Login: React.FC = () => {
         value={password}
         onChangeText={setPassword}
         secureTextEntry
-      />
-
-      <Text style={styles.label}>Email</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Enter your email"
-        value={email}
-        onChangeText={setEmail}
-        keyboardType="email-address"
       />
 
       <Button title="Sign Up" onPress={handleSignUp} />
@@ -68,7 +47,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: 16,
     backgroundColor: '#F5FAFF', // Background color
-    alignSelf: 'stretch',
   },
   header: {
     fontSize: 24,
