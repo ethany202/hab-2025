@@ -1,7 +1,9 @@
+import { useRouter } from 'expo-router';
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, Alert } from 'react-native';
 
 const Login: React.FC = () => {
+  const router = useRouter();
   const [name, setName] = useState<string>('');
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
@@ -12,7 +14,9 @@ const Login: React.FC = () => {
       Alert.alert('Error', 'Please fill in all fields');
       return;
     }
-    Alert.alert('Success', 'You have successfully signed up!');
+    Alert.alert('Success', 'You have successfully signed up!', [
+      { text: 'OK', onPress: () => router.push('/role-selection') }
+    ]);
   };
 
   return (
