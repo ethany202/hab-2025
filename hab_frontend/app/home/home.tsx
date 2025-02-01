@@ -1,6 +1,5 @@
 import React from 'react';
 import { Text, View } from 'react-native';
-import Login from './login/login'; // Import the Login component
 
 export default function Index() {
   return (
@@ -11,7 +10,10 @@ export default function Index() {
         alignItems: 'center',
       }}
     >
-      <Login /> {/* Render the Login component */}
+      <View>
+        <Text>Good Morning, User!</Text>
+      </View>
+
     </View>
   );
 }
