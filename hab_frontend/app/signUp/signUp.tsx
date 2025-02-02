@@ -1,30 +1,51 @@
+import { useRouter } from 'expo-router';
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, Alert } from 'react-native';
 
 const SignUp: React.FC = () => {
-  const [name, setName] = useState<string>('');
+  const router = useRouter();
+  const [firstname, setName] = useState<string>('');
+  const [lastname, setLastName] = useState<string>('');
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [email, setEmail] = useState<string>('');
 
   const handleSignUp = () => {
-    if (!name || !username || !password || !email) {
+    if (!firstname || !username || !password || !email) {
       Alert.alert('Error', 'Please fill in all fields');
       return;
     }
-    Alert.alert('Success', 'You have successfully signed up!');
+    Alert.alert('Success', 'You have successfully signed up!', [
+      { text: 'OK', onPress: () => router.replace('/home/roleSelection') }
+    ]);
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>Sign Up</Text>
+      <Text style={styles.header}>Welcome to True Mobility!</Text>
 
-      <Text style={styles.label}>Username/Email</Text>
+      <Text style={styles.label}>First Name</Text>
       <TextInput
         style={styles.input}
-        placeholder="Enter your username or email"
-        value={name}
+        placeholder="Enter your first name"
+        value={firstname}
         onChangeText={setName}
+      />
+
+      <Text style={styles.label}>Last Name</Text>
+      <TextInput
+        style={styles.input}
+        placeholder="Enter your last name"
+        value={lastname}
+        onChangeText={setLastName}
+      />
+
+      <Text style={styles.label}>Username</Text>
+      <TextInput
+        style={styles.input}
+        placeholder="Enter your username"
+        value={username}
+        onChangeText={setUsername}
       />
 
       <Text style={styles.label}>Password</Text>
@@ -36,6 +57,15 @@ const SignUp: React.FC = () => {
         secureTextEntry
       />
 
+      <Text style={styles.label}>Email</Text>
+      <TextInput
+        style={styles.input}
+        placeholder="Enter your email"
+        value={email}
+        onChangeText={setEmail}
+        keyboardType="email-address"
+      />
+
       <Button title="Sign Up" onPress={handleSignUp} />
     </View>
   );
@@ -45,8 +75,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    padding: 16,
+    padding: '10%',
     backgroundColor: '#F5FAFF', // Background color
+    alignSelf: 'stretch',
   },
   header: {
     fontSize: 24,
@@ -68,9 +99,9 @@ const styles = StyleSheet.create({
     height: 40,
     borderColor: '#94BBE5', // Input border color
     borderWidth: 1,
-    marginBottom: 16,
-    paddingHorizontal: 8,
-    borderRadius: 4, // Rounded corners
+    marginBottom: 20,
+    paddingHorizontal: 10,
+    borderRadius: 15, // Rounded corners
     backgroundColor: '#F5FAFF', // Input background color
   },
 });
