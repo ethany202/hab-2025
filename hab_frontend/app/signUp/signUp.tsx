@@ -1,6 +1,6 @@
 import { useRouter } from 'expo-router';
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, Alert } from 'react-native';
+import { Alert, KeyboardAvoidingView, ScrollView, Text, TextInput, Button, StyleSheet, Platform, View, TouchableWithoutFeedback, Keyboard } from 'react-native';
 
 const SignUp: React.FC = () => {
   const router = useRouter();
@@ -21,53 +21,63 @@ const SignUp: React.FC = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.header}>Welcome to True Mobility!</Text>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 20}
+      style={styles.container}
+    >
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <ScrollView contentContainerStyle={styles.scrollView}>
+          <View style={styles.inner}>
+            <Text style={styles.header}>Welcome to True Mobility!</Text>
 
-      <Text style={styles.label}>First Name</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Enter your first name"
-        value={firstname}
-        onChangeText={setName}
-      />
+            <Text style={styles.label}>First Name</Text>
+            <TextInput
+              style={styles.input}
+              placeholder="Enter your first name"
+              value={firstname}
+              onChangeText={setName}
+            />
 
-      <Text style={styles.label}>Last Name</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Enter your last name"
-        value={lastname}
-        onChangeText={setLastName}
-      />
+            <Text style={styles.label}>Last Name</Text>
+            <TextInput
+              style={styles.input}
+              placeholder="Enter your last name"
+              value={lastname}
+              onChangeText={setLastName}
+            />
 
-      <Text style={styles.label}>Username</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Enter your username"
-        value={username}
-        onChangeText={setUsername}
-      />
+            <Text style={styles.label}>Username</Text>
+            <TextInput
+              style={styles.input}
+              placeholder="Enter your username"
+              value={username}
+              onChangeText={setUsername}
+            />
 
-      <Text style={styles.label}>Password</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Enter your password"
-        value={password}
-        onChangeText={setPassword}
-        secureTextEntry
-      />
+            <Text style={styles.label}>Password</Text>
+            <TextInput
+              style={styles.input}
+              placeholder="Enter your password"
+              value={password}
+              onChangeText={setPassword}
+              secureTextEntry
+            />
 
-      <Text style={styles.label}>Email</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Enter your email"
-        value={email}
-        onChangeText={setEmail}
-        keyboardType="email-address"
-      />
+            <Text style={styles.label}>Email</Text>
+            <TextInput
+              style={styles.input}
+              placeholder="Enter your email"
+              value={email}
+              onChangeText={setEmail}
+              keyboardType="email-address"
+            />
 
-      <Button title="Sign Up" onPress={handleSignUp} />
-    </View>
+            <Button title="Next" onPress={handleSignUp} />
+          </View>
+        </ScrollView>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
   );
 };
 
@@ -75,9 +85,18 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    padding: '10%',
+    padding: '5%',
     backgroundColor: '#F5FAFF', // Background color
     alignSelf: 'stretch',
+  },
+  scrollView: {
+    flexGrow: 1,
+    justifyContent: 'center',
+  },
+  inner: {
+    padding: 24,
+    flex: 1,
+    justifyContent: 'center',
   },
   header: {
     fontSize: 24,
@@ -104,6 +123,15 @@ const styles = StyleSheet.create({
     borderRadius: 15, // Rounded corners
     backgroundColor: '#F5FAFF', // Input background color
   },
+  button: {
+    height: 40,
+    borderColor: '#94BBE5', // Input border color
+    borderWidth: 1,
+    marginBottom: 20,
+    paddingHorizontal: 10,
+    borderRadius: 15, // Rounded corners
+    backgroundColor: '#F5FAFF', // Input background color
+  }
 });
 
 export default SignUp;
