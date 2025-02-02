@@ -12,7 +12,7 @@ const Login: React.FC = () => {
       Alert.alert('Error', 'Please fill in all fields');
       return;
     }
-    Alert.alert('Success', 'You have successfully signed up!');
+    Alert.alert('Success', 'You have successfully signed in!');
   };
 
   return (
