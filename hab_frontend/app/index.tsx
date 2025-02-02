@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 import Login from './login/login'; // Import the Login component
+import YourExercises from './exercises/yourExercises';
 
 export default function Index() {
   return (
@@ -11,7 +12,7 @@ export default function Index() {
         alignItems: 'center',
       }}
     >
-      <Login /> {/* Render the Login component */}
+      <YourExercises/>
     </View>
   );
 }

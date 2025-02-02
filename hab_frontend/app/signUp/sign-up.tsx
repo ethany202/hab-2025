@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, Alert } from 'react-native';
 
-const Login: React.FC = () => {
+const SignUp: React.FC = () => {
   const [name, setName] = useState<string>('');
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
@@ -17,7 +17,7 @@ const Login: React.FC = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>Sign In</Text>
+      <Text style={styles.header}>Sign Up</Text>
 
       <Text style={styles.label}>Username/Email</Text>
       <TextInput
@@ -75,4 +75,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Login;
+export default SignUp;

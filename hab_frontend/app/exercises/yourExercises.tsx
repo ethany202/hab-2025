@@ -1,27 +1,36 @@
-import {Text, View} from 'react-native'
-
+import {Text, View, ScrollView} from 'react-native'
+import SpecificExercise from './specificExercise';
+import Header from '../header/header';
 
 const assignedExercises = [
     {
-        "exerciseName": "Seated ...",
+        "exerciseName": "Seated Leg Raises",
         "exerciseDesc": "DESC"
     },
     {
-        "exerciseName": "asldkjasd...",
+        "exerciseName": "Seated Sitting Down Seat",
         "exerciseDesc": "DESC2"
     }
 ]
 
 export default function YourExercises(){
     return (
-        <View>
+        <ScrollView bounces={false} style={{
+            alignSelf: 'stretch',
+        }}>
             {/** Insert Header */}
+            <Header pageTitle='Your Exercises'/>
 
-            {assignedExercises.map(exercise => {
+            {assignedExercises.map((exercise, index) => {
                 return (
-                    <View></View>
+                    <SpecificExercise
+                        key={exercise.exerciseName}
+                        exerciseNum={index+1}
+                        exerciseName={exercise.exerciseName}
+                        exerciseDesc={exercise.exerciseDesc}
+                    />
                 )
             })}
-        </View>
+        </ScrollView>
     )
 }
