@@ -2,6 +2,7 @@ import {Text, View, Button, TouchableOpacity} from 'react-native';
 import YoutubePlayer from 'react-native-youtube-iframe';
 import { StyleSheet } from 'react-native';
 import { Dimensions } from "react-native";
+import { router } from 'expo-router';
 
 interface SpecificExerciseProps{
     exerciseNum: number,
@@ -13,6 +14,7 @@ const videoWidth = Dimensions.get('window').width * 0.8;
 const videoHeight = videoWidth * 0.6;
 
 export default function SpecificExercise({exerciseNum, exerciseName, exerciseDesc} : SpecificExerciseProps){
+
     return (
         <View style={{
             margin: 20,
@@ -28,7 +30,10 @@ export default function SpecificExercise({exerciseNum, exerciseName, exerciseDes
 
             <TouchableOpacity
                 style={styles.startButton}
-                onPress={() => console.log("HI")}>
+                onPress={() => router.replace({pathname: '/exercises/currentExercise', params: {
+                    exerciseName: exerciseName,
+                    exerciseDesc: exerciseDesc
+                }})}>
                 <Text style={styles.startText}>
                     Start
                 </Text>

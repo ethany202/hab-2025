@@ -4,18 +4,28 @@ import { StyleSheet } from 'react-native';
 import { router } from 'expo-router';
 
 interface HeaderProps{
-    pageTitle: string
+    pageTitle: string,
+    previousPath?: string
 }
 
-export default function Header({pageTitle}: HeaderProps){
+export default function Header({pageTitle, previousPath}: HeaderProps){
     return (
         <View style={styles.header}>
             <View>
-                <TouchableOpacity
-                    onPress={() => router.replace({pathname: '/home/home'})}>
-                    <MaterialIcons style={styles.homeIcon} color={'darkblue'} size={40} name={'home'}/>
+                {
+                    previousPath === undefined
+                    ? <TouchableOpacity
+                        onPress={() => router.replace({pathname: '/home/home'})}>
+                        <MaterialIcons style={styles.homeIcon} color={'darkblue'} size={40} name={'home'}/>
+
+                    </TouchableOpacity>
+                    : <TouchableOpacity
+                    onPress={() => router.replace({pathname: previousPath})}>
+                        <MaterialIcons style={styles.homeIcon} color={'darkblue'} size={40} name={'arrow-back'}/>
 
                 </TouchableOpacity>
+                }
+                
             </View>
             <View>
                 <Text style={styles.pageTitle}>{pageTitle}</Text>

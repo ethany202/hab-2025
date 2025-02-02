@@ -11,6 +11,7 @@ export default function RootLayout() {
       <Stack.Screen name="home/home" options={{headerShown: false}}/>
       <Stack.Screen name="exercises/yourExercises" options={{headerShown: false}}/>
       <Stack.Screen name="exercises/setExercises" options={{headerShown: false}}/>
+      <Stack.Screen name="exercises/currentExercise" options={{headerShown: false}}/>
     </Stack>
     //</ThemeProvider>
   );
