@@ -4,13 +4,14 @@ import { View, Text, TextInput, Button, StyleSheet, Alert } from 'react-native';
 
 const Login: React.FC = () => {
   const router = useRouter();
-  const [name, setName] = useState<string>('');
+  const [firstname, setName] = useState<string>('');
+  const [lastname, setLastName] = useState<string>('');
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [email, setEmail] = useState<string>('');
 
   const handleSignUp = () => {
-    if (!name || !username || !password || !email) {
+    if (!firstname || !username || !password || !email) {
       Alert.alert('Error', 'Please fill in all fields');
       return;
     }
@@ -21,14 +22,22 @@ const Login: React.FC = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>Sign Up</Text>
+      <Text style={styles.header}>Welcome to True Mobility!</Text>
 
       <Text style={styles.label}>First Name</Text>
       <TextInput
         style={styles.input}
         placeholder="Enter your first name"
-        value={name}
+        value={firstname}
         onChangeText={setName}
+      />
+
+      <Text style={styles.label}>Last Name</Text>
+      <TextInput
+        style={styles.input}
+        placeholder="Enter your last name"
+        value={lastname}
+        onChangeText={setLastName}
       />
 
       <Text style={styles.label}>Username</Text>
@@ -66,7 +75,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    padding: 16,
+    padding: '10%',
     backgroundColor: '#F5FAFF', // Background color
     alignSelf: 'stretch',
   },
@@ -90,9 +99,9 @@ const styles = StyleSheet.create({
     height: 40,
     borderColor: '#94BBE5', // Input border color
     borderWidth: 1,
-    marginBottom: 16,
-    paddingHorizontal: 8,
-    borderRadius: 4, // Rounded corners
+    marginBottom: 20,
+    paddingHorizontal: 10,
+    borderRadius: 15, // Rounded corners
     backgroundColor: '#F5FAFF', // Input background color
   },
 });
